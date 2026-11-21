@@ -220,7 +220,7 @@ a:focus-visible {
   color: var(--white);
   background:
     linear-gradient(90deg, rgba(6, 20, 61, 0.88) 0%, rgba(6, 20, 61, 0.6) 45%, rgba(6, 20, 61, 0) 75%),
-    url("T/hero.jpg") center right / cover no-repeat,
+    url("T/L1.png") center right / cover no-repeat,
     #1c3a8a;
 }
 
