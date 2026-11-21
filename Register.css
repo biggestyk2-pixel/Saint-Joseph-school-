@@ -1,0 +1,326 @@
+:root {
+  --navy: #1d2f6f;
+  --navy-dark: #14214f;
+  --gold: #c9a227;
+  --ink: #1c2433;
+  --muted: #5d6779;
+  --line: #cfd6e4;
+  --paper: #f4f6fb;
+  --white: #ffffff;
+  --error: #b3261e;
+  --radius: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.5;
+}
+
+/* ---------- Banner ---------- */
+.banner {
+  display: block;
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 4px solid var(--gold);
+}
+
+/* ---------- Heading ---------- */
+.page-title {
+  margin: 28px 16px 4px;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color:darkblue;
+}
+
+.page-sub {
+  margin: 0 16px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Form card ---------- */
+.reg-form {
+  max-width: 520px;
+  margin: 0 auto 40px;
+  padding: 24px 20px 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--navy);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(20, 33, 79, 0.08);
+}
+
+@media (min-width: 560px) {
+  .reg-form {
+    padding: 32px 36px 36px;
+  }
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field > label,
+.field > legend,
+.field-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy-dark);
+}
+
+fieldset.field {
+  border: 0;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+fieldset.field > legend {
+  padding: 0;
+}
+
+/* ---------- Inputs ---------- */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 1rem; /* 16px stops iOS zooming on focus */
+  color: var(--ink);
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%231d2f6f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+input::placeholder {
+  color: #9aa3b5;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.35);
+}
+
+input:user-invalid,
+select:user-invalid {
+  border-color: var(--error);
+}
+
+/* ---------- Gender pills ---------- */
+.radios {
+  display: flex;
+  gap: 12px;
+}
+
+.pill {
+  flex: 1;
+  position: relative;
+  cursor: pointer;
+}
+
+.pill input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.pill span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  transition: all 0.15s;
+}
+
+.pill input:checked + span {
+  color: var(--white);
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.pill input:focus-visible + span {
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.5);
+}
+
+/* ---------- Photo upload ---------- */
+.upload-area {
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  background: #f8f9fd;
+  border: 2px dashed var(--navy);
+  border-radius: var(--radius);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.upload-area:hover,
+.upload-area:focus-visible,
+.upload-area.dragover {
+  outline: none;
+  background: #fbf6e3;
+  border-color: var(--gold);
+}
+
+.upload-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.upload-title {
+  margin: 8px 0 2px;
+  font-weight: 600;
+  color: var(--navy-dark);
+}
+
+.upload-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.upload-preview {
+  display: none;
+  padding: 16px;
+  text-align: center;
+  background: #f8f9fd;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.upload-preview img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+}
+
+.upload-preview p {
+  margin: 8px 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+#removeBtn {
+  padding: 6px 16px;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--error);
+  background: transparent;
+  border: 1.5px solid var(--error);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* ---------- Submit ---------- */
+.submit-btn {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 8px;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  background:darkblue;
+  border: 0;
+  border-bottom: 5px solid var(--gold);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.submit-btn:hover {
+  background: var(--navy-dark);
+}
+
+.submit-btn:focus-visible {
+  outline: 3px solid rgba(201, 162, 39, 0.6);
+  outline-offset: 2px;
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* ---------- Messages ---------- */
+.form-message {
+  display: none;
+  margin-top: 16px;
+  padding: 12px 14px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: var(--radius);
+}
+
+.form-message.success {
+  display: block;
+  color: #1b5e20;
+  background: #e8f5e9;
+}
+
+.form-message.error {
+  display: block;
+  color: var(--error);
+  background: #fdecea;
+}
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 8px 5vw 16px;
+    background: var(--white);
+    box-shadow: 0 10px 20px rgba(10, 31, 92, 0.12);
+  }
+.footer {
+  display: full;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 26px 5%;
+  background: whitesmoke;
+  font-size: 13px;
+}

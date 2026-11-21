@@ -1,0 +1,356 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  color:black; font:bold;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Top bar */
+.topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 5%;
+  background: rgba(228, 240, 107, 0.5490196078431373);
+}
+
+.logo { font-size: 18px; font-weight: 700; }
+
+.menu {
+  display: flex;
+  gap: 36px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.btn-register {
+  padding: 6px 18px;
+  border-radius: 20px;
+  background: #fff;
+}
+
+/* Hero */
+.hero {
+  min-height: 30vh;
+  display: flex;
+  align-items: up;
+  padding: 100px 5% 60px;
+  color: #fff;
+  
+  background:
+    linear-gradient(90deg, rgba(0, 40, 60, 0.7), rgba(0, 0, 0, 0.15)),
+    url("T/L.png") center / cover no-repeat,
+    #2f6f86;
+}
+
+.hero-text { max-width: 560px; color:white}
+
+.hero h1 {
+  margin: 0 0 16px;
+  font-size: clamp(32px, 6vw, 52px);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.hero h1 span { font-weight: 300; }
+
+.hero p { margin: 0 0 36px; font-size: 18px; }
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px;
+}
+
+.btn-plain { font-size: 14px; }
+
+.btn-pill {
+  padding: 12px 26px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+}
+
+.btn-pill:hover { background: rgba(255, 255, 255, 0.5); }
+
+/* Contact strip */
+.info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 30px 8%;
+  background: linear-gradient(90deg, #e6eff2, #a9c9d3);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+address { font-style: normal; }
+.contact { text-align: right; }
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 26px 5%;
+  background: #f3f7f8;
+  font-size: 13px;
+}
+
+.footer p { margin: 0; }
+.footer a { text-transform: uppercase; font-weight: 600; }
+
+/* Phones */
+@media (max-width: 720px) {
+  .topbar { flex-wrap: wrap; justify-content: center; position: static; background: #fff; }
+  .menu { gap: 20px; font-size: 13px; }
+  .hero { padding-top: 50px; min-height: 80vh; }
+  .contact { text-align: left; }
+}
+.Headed{background-image:url("T/X.png");
+  background-size: middle;
+  background-position: center;
+  background-repeat: repeat;}
+
+/* Menu links */
+.menu {
+  display: flex;
+  gap: 32px;
+}
+
+.menu a {
+  position: relative;
+  padding: 6px 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #1c2b33;
+}
+
+/* Underline that grows on hover */
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #2f6f86;
+  transition: width 0.3s ease;
+}
+
+.menu a:hover::after,
+.menu a.active::after {
+  width: 100%;
+}
+
+.menu a:hover,
+.menu a.active {
+  color: #2f6f86;
+}
+
+/* Log in and Register */
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-login {
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #1c2b33;
+  border: 2px solid #2f6f86;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background: #2f6f86;
+  color: #fff;
+}
+
+.btn-register {
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  background: hwb(240 2% 58%);
+  border: 2px solid #2f6f86;
+  border-radius: 25px;
+  transition: 0.3s; border-bottom: 3px solid var(--gold);
+}
+
+.btn-register:hover {
+  background: #245566;
+  border-color: #245566;
+  border-bottom: 3px solid var(--gold);
+}
+/* ---------- About page ---------- */
+.about-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 50px 5% 70px;
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: #024759;
+}
+
+/* Every section becomes a card */
+.about-wrap section {
+  padding: 28px 30px;
+  border-top: 5px solid #2f6f86;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(28, 74, 92, 0.1);
+}
+
+.about-wrap h2 {
+  margin: 0 0 12px;
+  font-size: 24px;
+  color: #2f6f86;
+}
+
+.about-wrap p {
+  margin: 0 0 14px;
+}
+
+.about-wrap p:last-child {
+  margin-bottom: 0;
+}
+
+/* Mission and Vision side by side */
+.duo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* Lists with check marks */
+.about-wrap ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-wrap li {
+  position: relative;
+  margin-bottom: 10px;
+  padding: 10px 14px 10px 42px;
+  background: #f3f7f8;
+  border-radius: 10px;
+}
+
+.about-wrap li::before {
+  content: "\2713";
+  position: absolute;
+  left: 14px;
+  top: 10px;
+  font-weight: 700;
+  color: #2f6f86;
+}
+
+.about-wrap li:last-child {
+  margin-bottom: 0;
+}
+
+/* Message to parents */
+.about-wrap .parents {
+  color: #fff;
+  background: linear-gradient(135deg, #2f6f86, #1c4a5c);
+  border: none;
+}
+
+.about-wrap .parents h2 {
+  color: #fff;
+}
+
+.invite {
+  font-weight: 600;
+}
+
+.about-wrap .parents .btn-register {
+  display: inline-block;
+  margin-top: 14px;
+  background: #fff;
+  color: #2f6f86;
+  border-color: #fff;
+}
+
+.about-wrap .parents .btn-register:hover {
+  background: #e1eef2;
+  border-color: #e1eef2;
+}
+
+/* Phones */
+@media (max-width: 720px) {
+  .about-wrap section {
+    padding: 22px 20px;
+  }
+}
+.about-wrap {
+  background: #f3f7f8;
+  color: #1c2b33;
+}
+
+.about-wrap section {
+  color: #1c2b33;
+}
+
+.about-wrap .parents,
+.about-wrap .parents p {
+  color: #fff;
+}
+.about-wrap {
+  background: transparent;
+}
+
+body {
+  background: #e8f0f3;
+}
+/* Outer wrapper stays see-through */
+.about-wrap {
+  background: transparent;
+}
+
+/* Cards get the white background back */
+.about-wrap section {
+  background: #fff;
+  color: #1c2b33;
+}
+
+/* Mission and Vision wrapper stays see-through */
+.duo {
+  background: transparent;
+}
+
+/* Keep the parents card blue */
+.about-wrap .parents {
+  background: linear-gradient(135deg, #2f6f86, #1c4a5c);
+  color: #fff;
+}

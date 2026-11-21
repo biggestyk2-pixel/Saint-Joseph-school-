@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us | Saint Joseph International School</title>
+  <link rel="stylesheet" href="C.css">
+  <link rel="stylesheet" href="Nav.css">
+</head>
+<body>
+  <header class="site-header">
+  <a class="brand" href="home.html">
+    <img src="T/L.png" alt="Saint Joseph International School crest">
+    <div class="brand-text">
+      <strong>SAINT JOSEPH</strong>
+      <span>INTERNATIONAL SCHOOL</span>
+    </div>
+  </a>
+
+  <input type="checkbox" id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
+  <label for="menuToggle" class="menu-btn" aria-hidden="true"><span></span></label>
+
+  <nav class="main-nav" id="mainNav" aria-label="Main">
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="AboutUs.html">About Us</a></li>
+      <li><a href="Academics.html">Academics</a></li>
+      <li><a href="Register.html">Register</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a class="active" href="C.html" aria-current="page">Contact</a></li>
+    </ul>
+  </nav>
+  </header>
+
+  <h1 class="page-title">Contact Us</h1>
+  <p class="page-sub">Questions about admission or fees? Send us a message.</p>
+
+  <section class="contact-info">
+    <div class="info-item">
+      <span class="info-icon">📍</span>
+      <div>
+        <strong>Address</strong>
+        <p>Saint Joseph Church Compound Anaku, <br> Anambra State.</p>
+      </div>
+    </div>
+    <div class="info-item">
+      <span class="info-icon">📞</span>
+      <div>
+        <strong>Phone</strong>
+        <p><a href="tel:+2348012345678">09130161776</a></p>
+      </div>
+    </div>
+    <div class="info-item">
+      <span class="info-icon">✉️</span>
+      <div>
+        <strong>Email</strong>
+        <p><a href="mailto:info@saintjoseph.edu.ng">info@saintjoseph.edu.ng</a></p>
+      </div>
+    </div>
+    <div class="info-item">
+      <span class="info-icon">🕗</span>
+      <div>
+        <strong>Office hours</strong>
+        <p>Monday to Friday, 8:00am to 4:00pm</p>
+      </div>
+    </div>
+  </section>
+
+  <form class="reg-form" id="contactForm" novalidate style="padding:20px;">
+    <div class="field">
+      <label for="cName">Full name</label>
+      <input type="text" id="cName" name="name" placeholder="e.g. Mary Okafor" autocomplete="name" required>
+    </div>
+
+    <div class="field">
+      <label for="cEmail">Email address</label>
+      <input type="email" id="cEmail" name="email" placeholder="e.g. mary@example.com" autocomplete="email" required>
+    </div>
+
+    <div class="field">
+      <label for="cPhone">Phone number</label>
+      <input type="tel" id="cPhone" name="phone" placeholder="e.g. 08012345678" autocomplete="tel" inputmode="tel">
+    </div>
+
+    <div class="field">
+      <label for="cSubject">Enquiry</label>
+      <select id="cSubject" name="subject" required>
+        <option value=""></option>
+        <option>Admission enquiry</option>
+        <option>School fees</option>
+        <option>Result or records</option>
+        <option>Complaint</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="cMessage">Message</label>
+      <textarea id="cMessage" name="message" rows="5" placeholder="Write your message here" required></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn" id="sendBtn">Send message</button>
+    <div class="form-message" id="contactMessage" role="status"></div>
+  </form>
+  <footer class="footer">
+    <p>&copy; 2026 Saint Joseph International School. All rights reserved.</p>
+    <a href="C.html" class="btn-register">Contact Us </a>
+  </footer>
+  <script>
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('sendBtn');
+    const msg = document.getElementById('contactMessage');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      // TODO: replace with your real send (fetch to your server, Formspree, etc.)
+      setTimeout(() => {
+        msg.textContent = 'Message sent. We will reply soon.';
+        msg.className = 'form-message success';
+        form.reset();
+        btn.disabled = false;
+        btn.textContent = 'Send message';
+      }, 800);
+    });
+  </script>
+</body>
+</html>

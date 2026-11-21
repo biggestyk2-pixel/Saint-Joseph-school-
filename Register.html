@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registration Portal</title>
+  <link rel="stylesheet" href="Register.css">
+  <link rel="stylesheet" href="Nav.css">
+</head>
+<body>
+  <header class="site-header">
+  <a class="brand" href="home.html">
+    <img src="T/L.png" alt="Saint Joseph International School crest">
+    <div class="brand-text">
+      <strong>SAINT JOSEPH</strong>
+      <span>INTERNATIONAL SCHOOL</span>
+    </div>
+  </a>
+
+  <input type="checkbox" id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
+  <label for="menuToggle" class="menu-btn" aria-hidden="true"><span></span></label>
+
+  <nav class="main-nav" id="mainNav" aria-label="Main">
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="AboutUs.html">About Us</a></li>
+      <li><a href="Academics.html">Academics</a></li>
+      <li><a href="Register.html">Register</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a class="active" href="C.html" aria-current="page">Contact</a></li>
+    </ul>
+  </nav>
+  </header>
+  
+
+  <h1 class="page-title">Student Registration Form</h1>
+  <p class="page-sub">Fill in the details below to register.</p>
+
+  <form class="reg-form" id="regForm" novalidate>
+    <div class="field">
+      <label for="name">Full name</label>
+      <input type="text" id="name" name="name" placeholder="e.g. John Adebayo" autocomplete="name" required>
+    </div>
+
+    <div class="field">
+      <label for="phone">Phone number</label>
+      <input type="tel" id="phone" name="phone" placeholder="e.g. 08012345678" autocomplete="tel" inputmode="tel" required>
+    </div>
+
+    <div class="field">
+      <label for="email">Email address</label>
+      <input type="email" id="email" name="email" placeholder="e.g. john@example.com" autocomplete="email" required>
+    </div>
+
+    <div class="field">
+      <label for="studentClass">Class</label>
+      <select id="studentClass" name="class" required>
+        <option value="">Select class</option>
+        <option>JSS1</option>
+        <option>JSS2</option>
+        <option>JSS3</option>
+        <option>SS1</option>
+        <option>SS2</option>
+        <option>SS3</option>
+      </select>
+    </div>
+
+    <fieldset class="field">
+      <legend>Gender</legend>
+      <div class="radios">
+        <label class="pill"><input type="radio" name="gender" value="male" required><span>Male</span></label>
+        <label class="pill"><input type="radio" name="gender" value="female"><span>Female</span></label>
+      </div>
+    </fieldset>
+
+    <div class="field">
+      <span class="field-label">Profile photo</span>
+      <div class="upload-area" id="uploadArea" role="button" tabindex="0">
+        <div class="upload-icon">📷</div>
+        <p class="upload-title">Tap to upload a photo</p>
+        <p class="upload-hint">JPG or PNG, max 2MB</p>
+      </div>
+      <input type="file" id="photo" name="photo" accept="image/*" hidden>
+
+      <div class="upload-preview" id="uploadPreview">
+        <img id="previewImg" alt="Photo preview">
+        <p id="fileName"></p>
+        <button type="button" id="removeBtn">Remove photo</button>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">Submit registration</button>
+    <div class="form-message" id="formMessage" role="status"></div>
+  </form>
+  <footer class="footer">
+    <p>&copy; 2026 Saint Joseph International School. All rights reserved.</p>
+    <a href="C.html" class="btn-register">Contact Us </a>
+  </footer>
+
+  <script>
+    const MAX_SIZE = 2 * 1024 * 1024; // 2MB
+
+    const form = document.getElementById('regForm');
+    const area = document.getElementById('uploadArea');
+    const input = document.getElementById('photo');
+    const preview = document.getElementById('uploadPreview');
+    const img = document.getElementById('previewImg');
+    const nameEl = document.getElementById('fileName');
+    const msg = document.getElementById('formMessage');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function showMessage(text, type) {
+      msg.textContent = text;
+      msg.className = 'form-message ' + type;
+    }
+
+    function clearPhoto() {
+      input.value = '';
+      preview.style.display = 'none';
+      area.style.display = 'block';
+    }
+
+    function showFile(file) {
+      if (!file) return;
+      if (!file.type.startsWith('image/')) {
+        showMessage('Please choose an image file (JPG or PNG).', 'error');
+        return;
+      }
+      if (file.size > MAX_SIZE) {
+        showMessage('Photo is too large. Please choose one under 2MB.', 'error');
+        clearPhoto();
+        return;
+      }
+      msg.className = 'form-message';
+      img.src = URL.createObjectURL(file);
+      nameEl.textContent = file.name;
+      preview.style.display = 'block';
+      area.style.display = 'none';
+    }
+
+    area.addEventListener('click', () => input.click());
+    a
